@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "161393768206",
+    "project_id": "bufon-instagram-clone",
+    "storage_bucket": "bufon-instagram-clone.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:161393768206:android:e06921deb19d43d2ed095f",
+        "android_client_info": {
+          "package_name": "com.example.bufoninstagram_flutter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAXPEzETCgQKwcmsDJUseyBg11LbT0tRw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
