@@ -1,3 +1,4 @@
+import 'package:bufoninstagram_flutter/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:bufoninstagram_flutter/responsive/mobile_screen_layout.dart';
 import 'package:bufoninstagram_flutter/responsive/responsive_layout.dart';
@@ -31,10 +32,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: mobileBackgroundColor,
       ),
-      home: const ResponsiveLayout(
-        mobileScreenLayout: MobileScreenLayout(),
-        webScreenLayout: WebScreenLayout(),
-      ),
+      // home: const ResponsiveLayout(
+      //   mobileScreenLayout: MobileScreenLayout(),
+      //   webScreenLayout: WebScreenLayout(),
+      // ),
+
+      home: const LogInScreen(),
     );
   }
 }
