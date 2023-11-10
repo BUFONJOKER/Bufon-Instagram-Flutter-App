@@ -4,6 +4,8 @@ import 'package:bufoninstagram_flutter/responsive/responsive_layout.dart';
 import 'package:bufoninstagram_flutter/responsive/web_screen_layout.dart';
 import 'package:bufoninstagram_flutter/utilities/colors.dart';
 import 'package:firebase_core/firebase_core.dart';
+
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
