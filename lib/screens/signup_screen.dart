@@ -1,7 +1,12 @@
+import 'dart:typed_data';
+
+import 'package:bufoninstagram_flutter/resources/auth_methods.dart';
 import 'package:bufoninstagram_flutter/widgets/text_field_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:developer';
+import 'package:bufoninstagram_flutter/utilities/utils.dart';
+import 'package:image_picker/image_picker.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -16,12 +21,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController bioController = TextEditingController();
+  Uint8List? image;
 
   @override
   void dispose() {
+    userNameController.dispose();
     emailController.dispose();
     passwordController.dispose();
+    bioController.dispose();
     super.dispose();
+  }
+
+  void selectImage() async {
+    var imageFromGallery = await imagePicker(ImageSource.gallery);
+    setState(() {
+      image = imageFromGallery;
+    });
   }
 
   @override
@@ -41,8 +56,34 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       const ColorFilter.mode(Colors.white, BlendMode.srcIn),
                 ),
                 const SizedBox(
-                  height: 50,
+                  height: 10,
                 ),
+                Stack(
+                  children: [
+                    image != null
+                        ? CircleAvatar(
+                            radius: 70,
+                            backgroundColor: Colors.grey,
+                            backgroundImage: MemoryImage(image!),
+                          )
+                        : const CircleAvatar(
+                            radius: 70,
+                            backgroundColor: Colors.grey,
+                            backgroundImage: NetworkImage(
+                                "https://th.bing.com/th/id/R.db0469234d3b806eda66a151ac198647?rik=oHqNIwcE8ji32Q&pid=ImgRaw&r=0"),
+                          ),
+                    Positioned(
+                        bottom: -10,
+                        left: 80,
+                        child: IconButton(
+                          onPressed: () {
+                            selectImage();
+                          },
+                          icon: const Icon(Icons.add_a_photo),
+                        )),
+                  ],
+                ),
+
                 const Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -93,8 +134,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 //email input
                 TextFieldInput(
                     textEditingController: emailController,
-                    hintText: 'Enter Your Email',
-                    isPass: true,
+                    hintText: 'Enter Email',
                     textInputType: TextInputType.emailAddress),
                 const SizedBox(
                   height: 20,
@@ -122,7 +162,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 TextFieldInput(
                     textEditingController: bioController,
                     hintText: 'Enter Your Bio',
-                    isPass: true,
                     textInputType: TextInputType.text),
                 const SizedBox(
                   height: 20,
@@ -155,8 +194,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   height: 20,
                 ),
                 TextButton(
-                  onPressed: () {
-                    log("Sign Up");
+                  onPressed: () async {
+                    String response = await AuthMethods().signUpUser(
+                        email: emailController.text,
+                        password: passwordController.text,
+                        userName: userNameController.text,
+                        bio: bioController.text,
+                        profileImage: image!);
+                    log(response);
                   },
                   style: TextButton.styleFrom(
                     backgroundColor: Colors.grey,

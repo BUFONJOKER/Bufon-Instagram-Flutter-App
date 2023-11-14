@@ -1,8 +1,8 @@
-import 'package:bufoninstagram_flutter/screens/login_screen.dart';
+// import 'package:bufoninstagram_flutter/screens/login_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:bufoninstagram_flutter/responsive/mobile_screen_layout.dart';
-import 'package:bufoninstagram_flutter/responsive/responsive_layout.dart';
-import 'package:bufoninstagram_flutter/responsive/web_screen_layout.dart';
+// import 'package:bufoninstagram_flutter/responsive/mobile_screen_layout.dart';
+// import 'package:bufoninstagram_flutter/responsive/responsive_layout.dart';
+// import 'package:bufoninstagram_flutter/responsive/web_screen_layout.dart';
 import 'package:bufoninstagram_flutter/utilities/colors.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:bufoninstagram_flutter/screens/signup_screen.dart';
